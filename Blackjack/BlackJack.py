@@ -120,8 +120,8 @@ def deal():
         player_hand.add_card(shuffled_deck.deal_card())
         dealer_hand.add_card(shuffled_deck.deal_card())
 
-    if in_play:
-        score -= 1
+    #if in_play:
+     #   score -= 1
 
     in_play = True
     win_lost_status = 0
@@ -130,7 +130,7 @@ def deal():
 def hit():
     global score, in_play, win_lost_status
 
-    if player_hand.get_value() <= 21:
+    if player_hand.get_value() <= 21 and win_lost_status == 0:
         player_hand.add_card(shuffled_deck.deal_card())
 
         if player_hand.get_value() > 21:
@@ -142,10 +142,10 @@ def hit():
 def stand():
     global score, win_lost_status, in_play
 
-    if player_hand.get_value() > 21:
+    if player_hand.get_value() > 21 and win_lost_status == 0:
         win_lost_status = 2
 
-    else:
+    elif win_lost_status == 0:
         while dealer_hand.get_value() < 17:
             dealer_hand.add_card(shuffled_deck.deal_card())
 
