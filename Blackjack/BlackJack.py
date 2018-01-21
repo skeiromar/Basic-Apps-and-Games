@@ -99,7 +99,9 @@ class Deck:
         random.shuffle(self.deck)  # Shuffles the deck
 
     def deal_card(self):
-        return random.choice(self.deck)  # Deals a card object from the deck
+        random_card = random.choice(self.deck)
+        self.deck.remove(random_card)
+        return random_card   # Deals a card object from the deck
 
     def __str__(self):
         s = "Deck contains: "
